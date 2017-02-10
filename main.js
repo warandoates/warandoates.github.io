@@ -45,6 +45,7 @@ function preload() {
     brickBreak.load.image("start", "img/finalstart.png");
     brickBreak.load.image("gameOverBtn", "img/finalgameover.png");
     brickBreak.load.image('paused', 'img/finalpaused.png');
+    brickBreak.load.image("gameWin", "img/gamewin.png");
 
     brickBreak.load.audio('funk', ["audio/miniBossLoop.mp3"]);
     brickBreak.load.audio('clash', ['audio/beep3.wav']);
@@ -92,9 +93,9 @@ function update() {
   brickBreak.physics.arcade.collide(ball, brickField, destroyBrick);
   if (paddleMvmt) {
     if (brickBreak.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
-      paddle.x -=  8;
+      paddle.x -=  14;
     } else if (brickBreak.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
-      paddle.x += 8;
+      paddle.x += 14;
     }
     else {
       paddle.x = brickBreak.input.x || regWidth;
@@ -136,7 +137,7 @@ function fieldMaker() {
     brickStyle = {padding: 10, width: 30, offset: {top: 50,left: 160}};
     brickField = brickBreak.add.group();
     for (let y = 0; y < 4; y++) {
-        for (let x = 0; x < 12; x++) {
+        for (let x = 0; x < 2; x++) {
             let xBrick = (x * (brickStyle.width + brickStyle.padding)) + brickStyle.offset.left;
             let yBrick = (y * (brickStyle.width + brickStyle.padding)) + brickStyle.offset.top;
             innerBricks = brickBreak.add.sprite(xBrick, yBrick, "brick");
@@ -183,8 +184,9 @@ function destroyBrick(ball, innerBricks) {
 
 function checkWin() {
     if (brickField.countLiving() === 0) {
-        alert("Winner! Winner!");
-        location.reload();
+      gameWin = brickBreak.add.button(regWidth, 300, "gameWin", restart);
+      gameWin.scale.setTo(0.8);
+      gameWin.anchor.set(0.5);
     }
 }
 
