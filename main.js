@@ -91,8 +91,16 @@ function update() {
   brickBreak.physics.arcade.collide(ball, paddle, paddleBallCollision);
   brickBreak.physics.arcade.collide(ball, brickField, destroyBrick);
   if (paddleMvmt) {
-    paddle.x = brickBreak.input.x || regWidth;
+    if (brickBreak.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+      paddle.x -=  8;
+    } else if (brickBreak.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+      paddle.x += 8;
+    }
+    else {
+      paddle.x = brickBreak.input.x || regWidth;
+    }
   }
+
 }
 
 function textMaker() {
