@@ -1,4 +1,22 @@
-#ok {
-  background-color: "purple";
+body {
+  background-image: url("img/backgroundBody.jpg");
+  background-repeat: repeat-y;
+}
 
+header {
+
+  position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+  background-image: url("img/headerBanner.jpg");
+}
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 50px;
+  text-shadow: 3px 2px;
+  color: #535353;
 }
