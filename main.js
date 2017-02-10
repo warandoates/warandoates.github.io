@@ -93,9 +93,9 @@ function update() {
   brickBreak.physics.arcade.collide(ball, brickField, destroyBrick);
   if (paddleMvmt) {
     if (brickBreak.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
-      paddle.x -=  20;
+      paddle.x -=  16;
     } else if (brickBreak.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
-      paddle.x += 20;
+      paddle.x += 16;
     }
     // else {
     //
@@ -186,9 +186,9 @@ function destroyBrick(ball, innerBricks) {
 function checkWin() {
     if (brickField.countLiving() === 0) {
       ball.destroy();
+      gameWin = brickBreak.add.button(regWidth, 300, "gameWin", restart);
       gameWin.scale.setTo(0.8);
       gameWin.anchor.set(0.5);
-      gameWin = brickBreak.add.button(regWidth, 300, "gameWin", restart);
     }
 }
 
