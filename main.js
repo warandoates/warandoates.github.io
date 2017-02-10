@@ -138,7 +138,7 @@ function fieldMaker() {
     brickStyle = {padding: 10, width: 30, offset: {top: 50,left: 160}};
     brickField = brickBreak.add.group();
     for (let y = 0; y < 4; y++) {
-        for (let x = 0; x < 1; x++) {
+        for (let x = 0; x < 12; x++) {
             let xBrick = (x * (brickStyle.width + brickStyle.padding)) + brickStyle.offset.left;
             let yBrick = (y * (brickStyle.width + brickStyle.padding)) + brickStyle.offset.top;
             innerBricks = brickBreak.add.sprite(xBrick, yBrick, "brick");
@@ -185,8 +185,8 @@ function destroyBrick(ball, innerBricks) {
 
 function checkWin() {
     if (brickField.countLiving() === 0) {
-      ball.destroy();
       gameWin = brickBreak.add.button(regWidth, 300, "gameWin", restart);
+      ball.destroy();
       gameWin.scale.setTo(0.8);
       gameWin.anchor.set(0.5);
     }
